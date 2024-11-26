@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+
+    <div class="row"> <!-- las filas-->
+        <div class="col-sm-12 col-md-4 col-lg-4 xl-4"> <!-- Columna izquierda-->
+            <h1> Registrar Venta </h1>
+            <div class="card"><!-- tarjeta-->
+                <div class="card-body">
+                    <form action="/registrarVenta/" method="post"> {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" id="txtID_Venta" name="txtID_Venta" placeholder="ID_Venta" class="form-control" minlength="1" maxlength="6" required><br>
+                        </div>
+                        <div class="form-group py-3">
+                            <input type="text" id="txtID_Producto" name="txtID_Producto" placeholder="ID_Producto" class="form-control" minlength="1" maxlength="100" required><br>
+                        </div>
+                        <div class="form-group py-3">
+                            <input type="text" id="txtID_Cliente" name="txtID_Cliente" placeholder="ID_Cliente" class="form-control" minlength="1" maxlength="6" required><br>
+                        </div>
+                        <div class="form-group py-3">
+                            <input type="number" id="txtCantidad_vendida" name="txtCantidad_vendida" placeholder="Cantidad Vendida" class="form-control" required><br>
+                        </div>
+                        <div class="form-group py-3">
+                            <input type="number" id="txtPrecio_Total" name="txtPrecio_Total" placeholder="Precio Total" class="form-control" required><br>
+                        </div>
+                        <div class="form-group py-3">
+                            <input type="date" id="txtFecha_venta" name="txtFecha_venta" placeholder="Fecha de Venta" class="form-control" required><br>
+                        </div>
+                        <div class="form-group py-3">
+                            <select id="txtMetodo_Pago" name="txtMetodo_Pago" class="form-control" required>
+                                <option value="Efectivo">Efectivo</option>
+                                <option value="Tarjeta">Tarjeta</option>
+                                <option value="Transferencia">Transferencia</option>
+                            </select><br>
+                        </div>
+                        <div class="form-group py-3">
+                            <button type="submit" class="btn btn-dark"> Registrar Venta </button><br>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- tarjeta-->
+        </div><!-- Columna izquierda-->
+
+        <div class="col-sm-12 col-md-8 col-lg-8 xl-8"> <!-- Columna derecha -->
+            <h1> Listado De Ventas </h1>
+            <!-- La tabla -->
+            <img class="w-50" src="{% static 'img/ventas.jpg' %}" alt="azul" width="400" height="400">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID_Venta</th>
+                        <th scope="col">ID_Producto</th>
+                        <th scope="col">ID_Cliente</th>
+                        <th scope="col">Cantidad Vendida</th>
+                        <th scope="col">Precio Total</th>
+                        <th scope="col">Fecha Venta</th>
+                        <th scope="col">Metodo Pago</th>
+                        <th> Opciones </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for venta in misventas %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ venta.ID_Venta }}</td>
+                            <td>{{ venta.ID_Producto }}</td>
+                            <td>{{ venta.ID_Cliente }}</td>
+                            <td>{{ venta.Cantidad_vendida }}</td>
+                            <td>{{ venta.Precio_Total }}</td>
+                            <td>{{ venta.Fecha_venta }}</td>
+                            <td>{{ venta.Metodo_Pago }}</td>
+                            <td> <a href="seleccionarVenta/{{ venta.ID_Venta }}" class="btn btn-info"> Editar </a> </td> <!-- Enlace para editar venta -->
+                            <td> <a href="borrarVenta/{{ venta.ID_Venta }}" class="btn btn-danger"> Borrar </a> </td> <!-- Enlace para borrar venta -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- La tabla -->
+        </div><!-- Columna derecha -->
+    </div>
+
+{% endblock %}

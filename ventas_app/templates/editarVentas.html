@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row"><!--fila en editar-->
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Venta</h2>
+        <!-- Tarjeta -->
+        <div class="card">
+            <div class="card-body">
+              <form action="/editarVenta/" method="POST"> {% csrf_token %}
+                <!-- Campo de solo lectura para ID_Venta -->
+                <div class="form-group">
+                  <input type="text" id="txtID_Venta" name="txtID_Venta" class="form-control" 
+                         value="{{ venta.ID_Venta }}" readonly><br>
+                </div>
+
+                <!-- ID_Producto -->
+                <div class="form-group py-3">
+                  <input type="text" id="txtID_Producto" name="txtID_Producto" class="form-control" 
+                         value="{{ venta.ID_Producto }}" minlength="1" maxlength="100" required><br>
+                </div>
+
+                <!-- ID_Cliente -->
+                <div class="form-group py-3">
+                    <input type="text" id="txtID_Cliente" name="txtID_Cliente" class="form-control" 
+                           value="{{ venta.ID_Cliente }}" minlength="1" maxlength="6" required><br>
+                </div>
+
+                <!-- Cantidad vendida -->
+                <div class="form-group py-3">
+                    <input type="number" id="txtCantidad_vendida" name="txtCantidad_vendida" class="form-control" 
+                           value="{{ venta.Cantidad_vendida }}" required><br>
+                </div>
+
+                <!-- Precio Total -->
+                <div class="form-group py-3">
+                    <input type="number" id="txtPrecio_Total" name="txtPrecio_Total" class="form-control" 
+                           value="{{ venta.Precio_Total }}" required><br>
+                </div>
+
+                <!-- Fecha de Venta -->
+                <div class="form-group py-3">
+                    <input type="date" id="txtFecha_venta" name="txtFecha_venta" class="form-control" 
+                           value="{{ venta.Fecha_venta|date:"Y-m-d" }}" required><br>
+                </div>
+
+                <!-- Método de Pago -->
+                <div class="form-group py-3">
+                    <select id="txtMetodo_Pago" name="txtMetodo_Pago" class="form-control" required>
+                        <option value="Efectivo" {% if venta.Metodo_Pago == "Efectivo" %}selected{% endif %}>Efectivo</option>
+                        <option value="Tarjeta" {% if venta.Metodo_Pago == "Tarjeta" %}selected{% endif %}>Tarjeta</option>
+                        <option value="Transferencia" {% if venta.Metodo_Pago == "Transferencia" %}selected{% endif %}>Transferencia</option>
+                    </select><br>
+                </div>
+                
+                <div class="form-group py-3">
+                  <button type="submit" class="btn btn-dark"> Guardar Venta </button><br>
+                </div>
+              </form>
+            </div>
+          </div>
+        <!-- Tarjeta -->
+    </div>
+</div><!--fila en editar-->
+
+{% endblock %}
