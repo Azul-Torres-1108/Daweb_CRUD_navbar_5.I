@@ -1,2 +1,15 @@
 # Daweb_CRUD_navbar_5.I
 CRUD de varias app de venta de pinturas
+- ![image](https://github.com/user-attachments/assets/6b438fdb-3fc8-4702-8624-f1539bf12085)
+- ![image](https://github.com/user-attachments/assets/11e40b5a-544b-4d35-8217-cea9a8bb75dc)
+- ![image](https://github.com/user-attachments/assets/535f821d-e8e7-4bd4-8d21-deaa203a60a1)
+- ![image](https://github.com/user-attachments/assets/b93d1cb2-27bf-4cf9-af35-b84b312ff5dc)
+- ![image](https://github.com/user-attachments/assets/682e383a-f486-4394-a612-9a5c5b750c9d)
+- ![image](https://github.com/user-attachments/assets/f008a8e4-8f52-40ae-ad5b-233cb30768f5)
+- ![image](https://github.com/user-attachments/assets/7316720e-275b-4101-a4c2-bd8426e31783)
+- ![image](https://github.com/user-attachments/assets/82a47468-8cb1-4bdf-bb02-cfbb26c00c6c)
+- ![image](https://github.com/user-attachments/assets/2786c6fa-e96d-4c0d-bf02-1980bfacd995)
+- ![image](https://github.com/user-attachments/assets/9f8bc605-6673-4163-b66d-539b977116ce)
+- ![image](https://github.com/user-attachments/assets/ba4c8f74-ba6b-4252-9c5d-f87a7cf0784e)
+- ![image](https://github.com/user-attachments/assets/66de7d5f-e6b9-405b-91ba-dc5ca6c6ea50)
+- ![image](https://github.com/user-attachments/assets/b2b5dd2b-30b5-4ed2-8c5a-58b7da006f9a)
