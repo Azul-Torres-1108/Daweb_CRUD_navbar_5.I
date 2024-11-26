@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+
+    <div class="row"> <!-- la filas-->
+    <div class="col-sm-12 col-md-4 col-lg-4 xl-4"> <!-- Columna izquierda-->
+        <h1> Pedido </h1>
+        <div class="card"><!-- tarjeta-->
+        <div class="card-body">
+            <form action="/registrarPedido/" method="post"> {% csrf_token %}<!-- -->
+            <div class="form-group">
+                <input type="text" id="txtidpedido" name="txtidpedido" placeholder="idpedido" class="form-control" minlenght="1" maxlenght="6" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtidcliente" name="txtidcliente" placeholder="idcliente" class="form-control"  minlenght="1" maxlenght="6" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtestado" name="txtestado" placeholder="estado" class="form-control"  minlenght="1" maxlenght="100" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="date" id="txtfechapedido" name="txtfechapedido" placeholder="fechapedido" class="form-control" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtmetodopago" name="txtmetodopago" placeholder="metodopago" class="form-control"  minlenght="1" maxlenght="100" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="number" id="numtotal" name="numtotal" placeholder="total" class="form-control"  minlenght="1" maxlenght="100" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtdireccionenvio" name="txtdireccionenvio" placeholder="direccionenvio" class="form-control" required><br>
+            </div>
+            <div class="form-group py-3">
+                <button type="submit" class="btn btn-dark"> Guardar Pedido </button><br>
+            </div>
+            </form>
+        </div>
+        </div><!-- tarjeta-->
+    </div><!-- Columna izquierda-->
+
+    <div class="col-sm-12 col-md-8 col-lg-8 xl-8"> <!-- Columna derecha -->
+        <h1> Listado De Pedidos</h1>
+        <img class="w-50" src="{% static 'img/pedidos.jpg' %}" alt="azul" width="400" height="400">
+        <!-- La tabla -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">idpedido </th>
+                <th scope="col">idcliente </th>
+                <th scope="col">estado </th>
+                <th scope="col">fechapedido </th>
+                <th scope="col">metodopago </th>
+                <th scope="col">total </th>
+                <th scope="col">direccionenvio </th>
+                <th> Opciones </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for p in mispedidos %}
+            <tr>
+                <td>
+                    {{forloop.counter}}
+                </td>
+                <td>
+                    {{p.idpedido}}
+                </td>
+                <td>
+                    {{p.idcliente}}
+                </td>
+                <td>
+                    {{p.estado}}
+                </td>
+                <td>
+                    {{p.fechapedido}}
+                </td>
+                <td>
+                    {{p.metodopago}}
+                </td>
+                <td>
+                    {{p.total}}
+                </td>
+                <td>
+                    {{p.direccionenvio}}
+                </td>
+                <td> <a href="seleccionarPedido/{{p.idpedido}}" class="btn btn-info"> Editar </a> </td> <!--Falta-->
+                <td> <a href="borrarPedido/{{p.idpedido}}" class="btn btn-danger"> Borrar </a> </td> <!--Falta-->
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <!-- La tabla -->
+    </div><!-- Columna derecha -->
+    </div>
+{% endblock %}

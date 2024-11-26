@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+
+<div class="row"><!--fila en editar-->
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Pedido</h2>
+        <!-- Aqui codigo tarjeta -->
+        <div class="card"><!-- tarjeta-->
+            <div class="card-body">
+              <form action="/editarPedido/" method="POST"> {% csrf_token %}
+                <div class="form-group">
+                  <input type="text" id="txtidpedido" name="txtidpedido" class="form-control" value="{{pedido.idpedido}}" minlength="1" maxlength="6" required><br>
+                </div>
+                <div class="form-group py-3">
+                  <input type="text" id="txtidcliente" name="txtidcliente" class="form-control" value="{{pedido.idcliente}}" minlength="1" maxlength="6" required><br>
+                </div>
+                <div class="form-group py-3">
+                  <input type="date" id="txtfechapedido" name="txtfechapedido" value="{{pedido.fechapedido}}" class="form-control" required><br>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtestado" name="txtestado" value="{{pedido.estado}}" class="form-control" minlength="1" maxlength="100" required><br>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numtotal" name="numtotal" value="{{pedido.total}}" class="form-control" minlength="1" maxlength="15" required><br>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtmetodopago" name="txtmetodopago" value="{{pedido.metodopago}}" class="form-control" minlength="1" maxlength="50" required><br>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtdireccionenvio"name="txtdireccionenvio" value="{{pedido.direccionenvio}}" class="form-control" minlength="1" maxlength="100" required><br>
+                </div>                
+                <div class="form-group py-3">
+                  <button type="submit" class="btn btn-dark"> Guardar Pedido </button><br>
+                </div>
+              </form>
+            </div>
+          </div><!-- tarjeta-->
+        <!-- Aqui codigo tarjeta -->
+    </div>
+</div><!--fila en editar-->
+
+{% endblock %}
