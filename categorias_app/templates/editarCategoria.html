@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row"><!--fila en editar-->
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Categoría</h2>
+        <!-- Aqui codigo tarjeta -->
+        <div class="card"><!-- tarjeta-->
+            <div class="card-body">
+              <form action="/editarCategoria/" method="POST"> {% csrf_token %}<!-- -->
+                <div class="form-group">
+                  <input type="text" id="txtidcategoria" name="txtidcategoria" class="form-control" value="{{categoria.idcategoria}}" minlength="1" maxlength="6" required><br>
+                </div>
+                <div class="form-group py-3">
+                  <input type="text" id="txtnombre" name="txtnombre" class="form-control" value="{{categoria.nombre}}" minlength="1" maxlength="100" required><br>
+                </div>
+                <div class="form-group py-3">
+                  <input type="text" id="txtdescripcion" name="txtdescripcion" class="form-control" value="{{categoria.descripcion}}" minlength="1" maxlength="100" required><br>
+                </div>
+                <div class="form-group py-3">
+                    <input type="date" id="txtfechacreacion" name="txtfechacreacion" value="{{categoria.fecha_creacion}}" class="form-control" required><br>
+                </div>
+                <div class="form-group py-3">
+                    <div class="form-check">
+                      <input type="text" id="txtestado" name="txtestado" class="form-control" value="{{categoria.estado}}" minlength="1" maxlength="100" required><br>
+                    </div><br>
+                </div>
+                <div class="form-group py-3">
+                    <input type="number" id="numorden" name="numorden" value="{{categoria.orden}}" class="form-control" min="1" required><br>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtmarca" name="txtmarca" value="{{categoria.marca}}" class="form-control" minlength="1" maxlength="50" required><br>
+                </div>                
+                <div class="form-group py-3">
+                  <button type="submit" class="btn btn-dark"> Guardar Categoría </button><br>
+                </div>
+              </form>
+            </div>
+          </div><!-- tarjeta-->
+        <!-- Aqui codigo tarjeta -->
+    </div>
+</div><!--fila en editar-->
+
+{% endblock %}

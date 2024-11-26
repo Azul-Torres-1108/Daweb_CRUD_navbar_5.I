@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+
+    <div class="row"> <!-- la filas-->
+    <div class="col-sm-12 col-md-4 col-lg-4 xl-4"> <!-- Columna izquierda-->
+        <h1> Categoria </h1>
+        <div class="card"><!-- tarjeta-->
+        <div class="card-body">
+            <form action="/registrarCategoria/" method="post"> {% csrf_token %}<!-- -->
+            <div class="form-group">
+                <input type="text" id="txtidcategoria" name="txtidcategoria" placeholder="idcategoria" class="form-control" minlenght="1" maxlenght="6" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtnombre" name="txtnombre" placeholder="nombre" class="form-control"  minlenght="1" maxlenght="100" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtdescripcion" name="txtdescripcion" placeholder="descripcion" class="form-control"  minlenght="1" maxlenght="100" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="date" id="txtfechacreacion" name="txtfechacreacion" placeholder="fechacreacion" class="form-control" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtestado" name="txtestado" placeholder="estado" class="form-control"  minlenght="1" maxlenght="15" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="number" id="numorden" name="numorden" placeholder="orden" class="form-control"  minlenght="1" maxlenght="100" required><br>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtmarca" name="txtmarca" placeholder="marca" class="form-control" required><br>
+            </div>
+            <div class="form-group py-3">
+                <button type="submit" class="btn btn-dark"> Guardar Categoria </button><br>
+            </div>
+            </form>
+        </div>
+        </div><!-- tarjeta-->
+    </div><!-- Columna izquierda-->
+
+    <div class="col-sm-12 col-md-8 col-lg-8 xl-8"> <!-- Columna derecha -->
+        <h1> Listado De Categoria</h1>
+        <img class="w-50" src="{% static 'img/categorias.jpg' %}" alt="azul" width="400" height="400">
+        <!-- La tabla -->
+        <table class="table table-striped">
+            
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">idcategoria </th>
+                <th scope="col">nombre </th>
+                <th scope="col">descripcion </th>
+                <th scope="col">fecha_creacion </th>
+                <th scope="col">estado </th>
+                <th scope="col">orden </th>
+                <th scope="col">marca </th>
+                <th> Opciones </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for m in miscategorias %}
+            <tr>
+                <td>
+                    {{forloop.counter}}
+                </td>
+                <td>
+                    {{m.idcategoria}}
+                </td>
+                <td>
+                    {{m.nombre}}
+                </td>
+                <td>
+                    {{m.descripcion}}
+                </td>
+                <td>
+                    {{m.fecha_creacion}}
+                </td>
+                <td>
+                    {{m.estado}}
+                </td>
+                <td>
+                    {{m.orden}}
+                </td>
+                <td>
+                    {{m.marca}}
+                </td>
+                <td> <a href="seleccionarCategoria/{{m.idcategoria}}" class="btn btn-info"> Editar </a> </td> <!--Falta-->
+                <td> <a href="borrarCategoria/{{m.idcategoria}}" class="btn btn-danger"> Borrar </a> </td> <!--Falta-->
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <!-- La tabla -->
+    </div><!-- Columna derecha -->
+    </div>
+{% endblock %}
